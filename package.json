@@ -63,7 +63,6 @@
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
     "sharp": "^0.25.1",
-    "smsc": "^0.3.1",
     "socket.io": "^2.3.0",
     "v-inputmask": "^1.1.0",
     "v-owl-carousel": "^1.0.8",
