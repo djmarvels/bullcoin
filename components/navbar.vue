@@ -1,28 +1,28 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark">
-    <nuxt-link :to="localePath('/')" class="navbar-brand flex-center">
+    <nuxt-link :to="pathTo('/')" class="navbar-brand flex-center">
       <img src="@/assets/images/logo.svg" alt="">
       <span v-html="$t('Navbar.AppName')" />
     </nuxt-link>
     <div id="navbarMenu" class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="navbar-item">
-          <nuxt-link :to="localePath('/')" class="navbar-link" v-html="$t('Navbar.Ecosystem')" />
+          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Ecosystem')" />
         </li>
         <li class="navbar-item">
-          <nuxt-link :to="localePath('/')" class="navbar-link" v-html="$t('Navbar.HowToBuy')" />
+          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.HowToBuy')" />
         </li>
         <li class="navbar-item">
-          <nuxt-link :to="localePath('/')" class="navbar-link" v-html="$t('Navbar.Price')" />
+          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Price')" />
         </li>
         <li class="navbar-item">
-          <nuxt-link :to="localePath('/')" class="navbar-link" v-html="$t('Navbar.Service')" />
+          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Service')" />
         </li>
         <li class="navbar-item">
-          <nuxt-link :to="localePath('/')" class="navbar-link" v-html="$t('Navbar.Blog')" />
+          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Blog')" />
         </li>
         <li class="navbar-item">
-          <nuxt-link :to="localePath('/')" class="navbar-link" v-html="$t('Navbar.Contact')" />
+          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Contact')" />
         </li>
       </ul>
       <ul class="navbar-nav navbar-nav--socials">
@@ -92,6 +92,11 @@ export default {
                 jQuery('.selectLang').attr('class', `nice-select selectLang ${event.target.value}`);
             }, 0);
         });
+    },
+    methods : {
+        pathTo(path) {
+            return this.localePath(path);
+        }
     }
 };
 </script>
