@@ -95,6 +95,7 @@ export default {
     },
     methods : {
         pathTo(path) {
+            if (typeof this.localePath === 'undefined') return path;
             return this.localePath(path);
         }
     }
