@@ -121,12 +121,22 @@
         <div class="container">
           <div class="row">
             <div class="col col-12 col-md-6">
+              <div class="index-steps-box">
+                <div class="index-steps-image" />
+                <div class="index-steps-title">
+                  <span v-html="$t('Index.Roadmap.Road')" />
+                  <span v-html="$t('Index.Roadmap.Map')" />
+                </div>
+                <div class="index-steps-subtitle" v-html="$t('Index.Roadmap.Subtitle')" />
+              </div>
+            </div>
+            <div class="col col-12 col-md-6">
               <div class="index-steps-main">
                 <div v-for="step in 4" :key="step" class="index-steps-main--row">
                   <div class="index-steps-main--date" v-html="$t(`Index.Steps[${step - 1}].Date`)" />
                   <div class="index-steps-main--status">
-                    <div class="index-steps-main--status_circle" />
-                    <div class="index-steps-main--status_progress" />
+                    <div :class="['index-steps-main--status_circle', {'index-steps-main--status_circle--active': currentStep === step}]" />
+                    <div :class="['index-steps-main--status_progress', { 'animation': currentStep === step }]" />
                   </div>
                   <div class="index-steps-main--body">
                     <div class="index-steps-main--title" v-html="$t(`Index.Steps[${step - 1}].Title`)" />
@@ -154,20 +164,172 @@ export default {
             buyVector        : false,
             ecosystem        : false,
             roadmap          : false
-        }
+        },
+        currentStep  : 0,
+        intervalStep : null,
+        timeStep     : 2990
     }),
     mounted() {
         Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
+        this.startIntervalStep();
     },
     beforeDestroy() {
+        if (this.intervalStep) {
+            clearTimeout(this.intervalStep);
+        }
         Object.keys(this.show).forEach(key => (this.$set(this.show, key, false)));
+    },
+    methods : {
+        startIntervalStep() {
+            this.intervalStep = setTimeout(() => (this.nextStep()), this.timeStep);
+        },
+        nextStep() {
+            this.currentStep = (this.currentStep >= 4) ? 1 : this.currentStep + 1;
+            this.intervalStep = setTimeout(() => (this.nextStep()), this.timeStep);
+        }
     }
 };
 </script>
 
 <style lang="scss">
+  @keyframes rotate_image {
+    0% {
+      transform: rotate(35.56deg) translateY(-2px);
+    }
+    50% {
+      transform: rotate(25.56deg) translateY(30px);
+    }
+    100% {
+      transform: rotate(35.56deg) translateY(-2px);
+    }
+  }
 @import "scss/base/colors";
 .index {
+  &-steps {
+    margin-top: 90px;
+    &-box {
+      position: relative;
+    }
+    &-subtitle {
+      font-size: 15px;
+      line-height: 100%;
+      color: #ffffff;
+      font-weight: 300;
+      margin-top: calc(-53px + 13px);
+    }
+    &-image {
+      position: absolute;
+      background: url('~assets/images/roadmap-img.png') no-repeat center top;
+      width: 293px;
+      height: 403px;
+      left: 186.86px;
+      top: -16.38px;
+      z-index: 2;
+      animation: rotate_image 9s 0s linear infinite;
+    }
+    &-title {
+      user-select: none;
+      span {
+        background: linear-gradient(180deg, #E50012 0%, #F30013 0.01%, #740000 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+        font-size: 150px;
+        line-height: 100%;
+        position: relative;
+        z-index: 1;
+        &:last-child {
+          z-index: 2;
+          top: calc(-75px + 22px);
+        }
+      }
+    }
+    &-main {
+      &--row {
+        display: flex;
+        justify-content: flex-start;
+      }
+      &--date {
+        white-space: nowrap;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 117.2%;
+        color: #484848;
+        padding-top: 6px;
+      }
+      &--body {
+        margin-left: 6px;
+      }
+      &--title {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        padding-top: 6px;
+      }
+      &--text {
+        margin-top: 19px;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 117.2%;
+        color: #B6B6B6;
+        padding-bottom: 30px;
+      }
+      &--status {
+        margin-left: 9px;
+        &_circle {
+          background: url('~assets/images/index-status-icon.svg') no-repeat center top;
+          min-width: 33px;
+          max-width: 33px;
+          min-height: 33px;
+          max-height: 33px;
+          position: relative;
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background: url('~assets/images/index-status-icon-active.svg') no-repeat center top;
+            transition: opacity 1s 0s linear;
+          }
+          &--active {
+            &::before {
+              opacity: 1;
+            }
+          }
+        }
+        &_progress {
+          width: 1px;
+          background: #4E4E4E;
+          height: calc(100% - 38px);
+          margin-left: auto;
+          margin-right: auto;
+          position: relative;
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            opacity: 0;
+            background: $red;
+            transition: height 3s 0s linear, opacity .1s 0s linear;
+          }
+          &.animation {
+            &::before {
+              opacity: 1;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
   &-ecosystem {
     margin-top: 183px;
     &-bottom {
