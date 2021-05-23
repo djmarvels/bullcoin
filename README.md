@@ -1,0 +1,2 @@
+# bullcoin
+friend project
