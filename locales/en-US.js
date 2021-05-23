@@ -67,6 +67,27 @@ export default {
             Road     : 'Road',
             Map      : 'map',
             Subtitle : 'What we\'ll be up to in 2021'
+        },
+        Blog : {
+            Title   : 'blog',
+            ShowAll : 'show all'
         }
+    },
+    Footer : {
+        LogoText : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At cursus malesuada enim nulla odio vitae velit convallis aenean.',
+        Menu     : [
+            'Home',
+            'How to buy',
+            'Blogs',
+            'Price',
+            'Services',
+            'Contract',
+            'Wallet Tracker',
+            'F.A.Q'
+        ],
+        Terms     : 'Terms of Service',
+        Privacy   : 'Privacy Policy',
+        Cookie    : 'Cookie Policy',
+        Copyright : 'Copyright © 2021   All Rights Reserved'
     }
 };

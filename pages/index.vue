@@ -120,7 +120,7 @@
       <div v-if="show.roadmap" class="index-steps">
         <div class="container">
           <div class="row">
-            <div class="col col-12 col-md-6">
+            <div class="col col-12 col-lg-6">
               <div class="index-steps-box">
                 <div class="index-steps-image" />
                 <div class="index-steps-title">
@@ -130,7 +130,7 @@
                 <div class="index-steps-subtitle" v-html="$t('Index.Roadmap.Subtitle')" />
               </div>
             </div>
-            <div class="col col-12 col-md-6">
+            <div class="col col-12 col-lg-6">
               <div class="index-steps-main">
                 <div v-for="step in 4" :key="step" class="index-steps-main--row">
                   <div class="index-steps-main--date" v-html="$t(`Index.Steps[${step - 1}].Date`)" />
@@ -149,7 +149,42 @@
         </div>
       </div>
     </transition>
-    <div style="height: 500px; width: 100%;" />
+    <transition name="fade">
+      <div v-if="show.blog" class="index-blog">
+        <div class="index-blog-aside">
+          <div class="index-blog-aside--title" v-html="$t('Index.Blog.Title')" />
+          <div class="index-blog-aside--bottom">
+            <div class="index-blog-aside--navigation">
+              <button type="button" class="index-blog-aside--prev" @click="blogPrev" />
+              <button type="button" class="index-blog-aside--next" @click="blogNext" />
+            </div>
+            <nuxt-link class="index-blog-aside--showall" :to="localePath('/')" v-html="$t('Index.Blog.ShowAll')" />
+          </div>
+        </div>
+        <div id="blogCarousel" class="owl-carousel owl-theme index-blog-carousel">
+          <div v-for="i in 6" :key="i" class="item">
+            <div class="index-blog-carousel--item">
+              <div class="index-blog-carousel--title">
+                Заголовок статьи <br>в две строки
+              </div>
+              <div class="index-blog-carousel--text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nisl hendrerit facilisis purus velit, non.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+    <div class="index-partners">
+      <div class="container">
+        <div class="index-partners-row">
+          <img :src="require('~/assets/images/BscScan.png').default" alt="" class="index-partner">
+          <img :src="require('~/assets/images/Certik.png').default" alt="" class="index-partner">
+          <img :src="require('~/assets/images/CoinMarketCap.png').default" alt="" class="index-partner">
+          <img :src="require('~/assets/images/nomics.png').default" alt="" class="index-partner">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -163,15 +198,29 @@ export default {
             buy              : false,
             buyVector        : false,
             ecosystem        : false,
-            roadmap          : false
+            roadmap          : false,
+            blog             : false
         },
         currentStep  : 0,
         intervalStep : null,
-        timeStep     : 2990
+        timeStep     : 2990,
+        blogCarousel : null
     }),
     mounted() {
         Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
         this.startIntervalStep();
+        require('owl.carousel');
+        setTimeout(() => {
+            // eslint-disable-next-line no-undef
+            this.blogCarousel = jQuery('#blogCarousel').owlCarousel({
+                margin    : 10,
+                loop      : true,
+                autoWidth : true,
+                items     : 4,
+                nav       : false,
+                dots      : false
+            });
+        }, 0);
     },
     beforeDestroy() {
         if (this.intervalStep) {
@@ -186,6 +235,12 @@ export default {
         nextStep() {
             this.currentStep = (this.currentStep >= 4) ? 1 : this.currentStep + 1;
             this.intervalStep = setTimeout(() => (this.nextStep()), this.timeStep);
+        },
+        blogPrev() {
+            this.blogCarousel.trigger('prev.owl.carousel');
+        },
+        blogNext() {
+            this.blogCarousel.trigger('next.owl.carousel');
         }
     }
 };
@@ -205,10 +260,204 @@ export default {
   }
 @import "scss/base/colors";
 .index {
+  &-partners {
+    margin-top: 114px;
+    @media(max-width: 767px) {
+      margin-top: 60px;
+    }
+    &-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 29px 0;
+      @media (max-width: 575px) {
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+  &-partner {
+    @media(max-width: 767px) and (min-width: 576px) {
+      flex-basis: calc(50% - 30px);
+      &:nth-last-child(2), &:nth-last-child(1) {
+        margin-top: 30px;
+      }
+    }
+    @media (max-width: 575px) {
+      flex-basis: 100%;
+      max-width: 200px;
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  &-blog {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: calc(100% - 144px);
+    overflow: hidden;
+    margin-left: 144px;
+    margin-top: 80px;
+    position: relative;
+    @media (max-width: 991px) {
+      flex-direction: column;
+      margin-left: 0;
+      max-width: 100%;
+    }
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      background: linear-gradient(270deg, #000000 42.01%, rgba(0, 0, 0, 0) 100%);
+      width: 319px;
+      height: 252px;
+      top: 0;
+      left: auto;
+      right: 0;
+      z-index: 2;
+      @media (max-width: 991px) {
+        bottom: 0;
+        top: auto;
+        right: -100px;
+      }
+      @media (max-width: 767px) {
+        right: -200px;
+      }
+    }
+    &-carousel {
+      @media (min-width: 992px) {
+        margin-left: 40px;
+      }
+      @media (max-width: 991px) {
+        margin-left: 15px;
+      }
+      &--item {
+        padding: 22px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: column;
+        background: url('~assets/images/index-carousel-item.png') no-repeat center top;
+        background-size: cover;
+        position: relative;
+        width: 263px;
+        height: 203px;
+        border-radius: 10px;
+        overflow: hidden;
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          z-index: 0;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to bottom, rgba(0,0,0,0), #141212);
+        }
+      }
+      &--title {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 19px;
+        text-align: center;
+        color: #FFFFFF;
+        position: relative;
+        z-index: 1;
+      }
+      &--text {
+        margin-top: 6px;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 105.7%;
+        text-align: center;
+        color: #6B6B6B;
+        position: relative;
+        z-index: 1;
+      }
+    }
+    &-aside {
+      @media (max-width: 991px) {
+        margin-bottom: 40px;
+      }
+      &--title {
+        font-weight: bold;
+        font-size: 98px;
+        line-height: 86px;
+        color: $white;
+      }
+      &--bottom {
+        margin-top: 29px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      &--navigation {
+        margin-right: 23px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+      &--prev, &--next {
+        background: linear-gradient(180deg, #E50012 0%, #F30013 0.01%, #740000 100%);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        width: 46px;
+        height: 36px;
+        &::before {
+          content: '';
+          display: block;
+          width: 14px;
+          height: 23px;
+        }
+      }
+      &--next {
+        margin-left: 9px;
+        &::before {
+          background: url('~assets/icons/chevron-right.svg') no-repeat center;
+        }
+      }
+      &--prev {
+        &::before {
+          background: url('~assets/icons/chevron-left.svg') no-repeat center;
+        }
+      }
+      &--showall {
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 13px;
+        text-decoration-line: underline;
+        color: #DF9797;
+        &:hover {
+          color: #DF9797;
+        }
+      }
+    }
+  }
   &-steps {
     margin-top: 90px;
     &-box {
       position: relative;
+      @media (max-width: 991px) {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 120px;
+      }
+      @media (max-width: 575px) {
+        max-width: 375px;
+      }
+      @media (max-width: 374px) {
+        max-width: 100%;
+        margin-bottom: 60px;
+      }
     }
     &-subtitle {
       font-size: 15px;
@@ -216,6 +465,9 @@ export default {
       color: #ffffff;
       font-weight: 300;
       margin-top: calc(-53px + 13px);
+      @media (max-width: 374px) {
+        text-align: center;
+      }
     }
     &-image {
       position: absolute;
@@ -226,6 +478,9 @@ export default {
       top: -16.38px;
       z-index: 2;
       animation: rotate_image 9s 0s linear infinite;
+      @media (max-width: 374px) {
+        display: none;
+      }
     }
     &-title {
       user-select: none;
@@ -238,6 +493,10 @@ export default {
         line-height: 100%;
         position: relative;
         z-index: 1;
+        @media (max-width: 374px) {
+          font-size: 115px;
+          text-align: center;
+        }
         &:last-child {
           z-index: 2;
           top: calc(-75px + 22px);
@@ -248,6 +507,13 @@ export default {
       &--row {
         display: flex;
         justify-content: flex-start;
+        &:last-child {
+          .index-steps-main--status_progress {
+            @media (min-width: 1200px) {
+              max-height: calc(100% - 38px - 26px);
+            }
+          }
+        }
       }
       &--date {
         white-space: nowrap;
@@ -273,6 +539,9 @@ export default {
         line-height: 117.2%;
         color: #B6B6B6;
         padding-bottom: 30px;
+        @media (max-width: 1199px) {
+          padding-bottom: 20px;
+        }
       }
       &--status {
         margin-left: 9px;
@@ -308,6 +577,9 @@ export default {
           margin-left: auto;
           margin-right: auto;
           position: relative;
+          @media (max-width: 1199px) {
+            height: calc(100% - 54px);
+          }
           &::before {
             content: '';
             display: block;

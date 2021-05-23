@@ -8,14 +8,17 @@
       <navbar />
     </div>
     <nuxt />
+    <the-footer />
   </div>
 </template>
 
 <script>
 import navbar from '@/components/navbar';
+import TheFooter from '@/components/TheFooter';
 export default {
     components : {
-        navbar
+        navbar,
+        TheFooter
     },
     data : () => ({
         show : {
