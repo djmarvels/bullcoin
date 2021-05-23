@@ -62,6 +62,11 @@ export default {
                 Text  : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nibh nibh nulla lacus sit ipsum. Tortor, posuere augue aliquet vivamus. Massa a tempor tincidunt donec. Faucibus diam nunc diam mauris nunc, ultricies id. Id tortor donec commodo vel, elementum nunc',
                 Date  : 'Q1 2021'
             }
-        ]
+        ],
+        Roadmap : {
+            Road     : 'Road',
+            Map      : 'map',
+            Subtitle : 'What we\'ll be up to in 2021'
+        }
     }
 };
