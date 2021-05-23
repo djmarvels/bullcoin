@@ -1,0 +1,156 @@
+.navbar {
+  .nice-select {
+
+    background-color: transparent;
+    height: 33px;
+    width: 66px;
+    padding: 0;
+    clear: initial;
+    line-height: initial;
+    white-space: initial;
+    font-size: unset;
+    border: 0;
+
+    @media (min-width: 992px) {
+      margin-left: 30px;
+      order: 3;
+    }
+
+    @media (max-width: 991px) {
+      order: 2;
+      margin-left: auto;
+    }
+
+    span.current {
+      transition: all .3s 0s ease-in-out;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 19px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      padding: 0;
+      height: 33px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 999;
+      border: 1px solid #FFFFFF;
+      border-radius: 16px;
+      &::after, &::before {
+        content: '';
+        display: block;
+      }
+      &::after {
+        background-image: url('~assets/icons/chevron-down.svg');
+        background-position: center top;
+        background-repeat: no-repeat;
+        margin-left: 2px;
+        margin-right: 7px;
+        width: 7px;
+        height: 3px;
+      }
+      &::before {
+        width: 16px;
+        height: 12px;
+        margin-right: 3px;
+        margin-left: 12px;
+      }
+    }
+
+    &::after {
+      content: initial;
+    }
+
+    &.en span.current::before {
+      background: url('~assets/flags/en.svg') no-repeat center;
+    }
+    &.ru span.current::before {
+      background: url('~assets/flags/ru.svg') no-repeat center;
+    }
+    &.de span.current::before {
+      background: url('~assets/flags/de.svg') no-repeat center;
+    }
+    &.jp span.current::before {
+      background: url('~assets/flags/jp.svg') no-repeat center;
+    }
+    &.fr span.current::before {
+      background: url('~assets/flags/fr.svg') no-repeat center;
+    }
+
+    ul.list {
+      margin-top: 0;
+      position: relative;
+      z-index: 998;
+      top: -33px;
+      border-radius: 16px;
+      background-color: #F7F7F7;
+      box-shadow: none;
+      margin-bottom: 0;
+      height: 0;
+      transform: scale(1) translateY(0px);
+      transform-origin: initial;
+      padding: 0;
+      li.option {
+        padding: 0 12px 0 11px;
+        height: 23px;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 18px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        color: $dark;
+        &::before {
+          content: '';
+          display: block;
+          width: 16px;
+          height: 12px;
+          margin-right: 7px;
+        }
+        &.focus, &.selected, &:hover {
+          background: #ffffff;
+        }
+        &[data-value="en"]::before {
+          background: url('~assets/flags/en.svg') no-repeat center;
+        }
+        &[data-value="de"]::before {
+          background: url('~assets/flags/de.svg') no-repeat center;
+        }
+        &[data-value="ru"]::before {
+          background: url('~assets/flags/ru.svg') no-repeat center;
+        }
+        &[data-value="jp"]::before {
+          background: url('~assets/flags/jp.svg') no-repeat center;
+        }
+        &[data-value="fr"]::before {
+          background: url('~assets/flags/fr.svg') no-repeat center;
+        }
+      }
+    }
+    &:hover {
+      span.current {
+        background: rgba(255,255,255,.35);
+      }
+    }
+    &.open {
+      span.current {
+        background: $white;
+        color: #A30101;
+        &::after {
+          background-image: url('~assets/icons/chevron-down-hover.svg');
+        }
+      }
+      ul.list {
+        padding: 41px 0 18px 0;
+        height: auto;
+      }
+    }
+  }
+}
+
+select#selectLang {
+  border: 1px solid #ffffff;
+  border-radius: 16px;
+}
