@@ -44,7 +44,7 @@ a, a:hover {
   }
 }
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity 1s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
@@ -53,7 +53,7 @@ a, a:hover {
   transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-down-leave-active {
-  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all 1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-down-enter, .slide-down-leave-to {
   transform: translateY(-100%);
@@ -62,8 +62,18 @@ a, a:hover {
   transition: all .6s ease;
 }
 .slide-up-leave-active {
-  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all .6s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-up-enter, .slide-up-leave-to {
   transform: translateY(100%);
+}
+
+.htb-step-box--text {
+  span, a {
+    color: $white !important;
+  }
+}
+
+.htb-step-box--bottom span {
+  color: $white;
 }

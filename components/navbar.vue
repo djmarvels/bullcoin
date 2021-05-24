@@ -10,7 +10,7 @@
           <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Ecosystem')" />
         </li>
         <li class="navbar-item">
-          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.HowToBuy')" />
+          <nuxt-link :to="pathTo('/howtobuy')" class="navbar-link" v-html="$t('Navbar.HowToBuy')" />
         </li>
         <li class="navbar-item">
           <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Price')" />

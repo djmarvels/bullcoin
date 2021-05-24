@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col col-12 col-lg-7">
-          <transition name="fade">
+          <transition name="fade" mode="out-in">
             <div v-if="show.indexText" class="index-header">
               <h1 class="index-header-title" v-html="$t('Index.Header.Title')" />
               <div class="index-header-bottom">
@@ -16,7 +16,7 @@
         </div>
         <div class="col col-12 col-lg-5">
           <div class="row">
-            <transition name="slide-down">
+            <transition name="slide-down" mode="in-out">
               <img v-if="show.indexHeaderImage" class="index-header-image d-lg-block d-none" :src="require('~/assets/images/index-header-image.png').default">
             </transition>
           </div>
@@ -24,7 +24,7 @@
       </div>
     </div>
     <!-- второй блок -->
-    <transition name="slide-up">
+    <transition name="slide-up" mode="out-in">
       <div v-if="show.live" class="container">
         <div class="index-live">
           <div class="index-live-row">
@@ -52,10 +52,10 @@
       </div>
     </transition>
     <!-- третий блок -->
-    <transition name="slide-up">
+    <transition name="slide-up" mode="out-in">
       <div v-if="show.buyVector" class="index-buy-vector" />
     </transition>
-    <transition name="fade">
+    <transition name="fade" mode="out-in">
       <div v-if="show.buy" class="container">
         <div class="index-buy">
           <div class="index-buy-video">
@@ -226,7 +226,7 @@ export default {
         if (this.intervalStep) {
             clearTimeout(this.intervalStep);
         }
-        Object.keys(this.show).forEach(key => (this.$set(this.show, key, false)));
+        // Object.keys(this.show).forEach(key => (this.$set(this.show, key, false)));
     },
     methods : {
         startIntervalStep() {

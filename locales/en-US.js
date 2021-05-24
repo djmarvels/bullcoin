@@ -73,6 +73,7 @@ export default {
             ShowAll : 'show all'
         }
     },
+    /* Футер */
     Footer : {
         LogoText : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At cursus malesuada enim nulla odio vitae velit convallis aenean.',
         Menu     : [
@@ -89,5 +90,48 @@ export default {
         Privacy   : 'Privacy Policy',
         Cookie    : 'Cookie Policy',
         Copyright : 'Copyright © 2021   All Rights Reserved'
+    },
+    /* How to buy */
+    HowToBuy : {
+        Head : {
+            Title    : 'How<br>to Buy',
+            SubTitle : 'A step by step guide on how <br>to buy bull from Pancakeswap.',
+            Buttons  : ['MARKETS', 'BUY ON NAMES']
+        },
+        Steps : [
+            {
+                Title : 'Step 1: <b>Create a Wallet</b>',
+                Text  : 'Download Trust Wallet and create a wallet. Keep your phrase a secret! Never share it with anyone and store it properly! Make sure to copy the contract address below!'
+            },
+            {
+                Title : 'Step 2: <b>Add Safemoon to the Wallet</b>',
+                Text  : 'Tap the icon in the top-right and search for "Safemoon". If it\'s not there, \n' +
+              'tap "Add Custom Token". <br><br>\n' +
+              '\n' +
+              'At the top, tap "Ethereum" next to Network, and change it to "Smart Chain". Copy the contract address on this page and put it in the Contract Address box.<br><br>\n' +
+              '\n' +
+              'Next, put "Safemoon" as the name, and the symbol as SFM. \n' +
+              'Decimals will be 9.\n<br><br>' +
+              '\n' +
+              'Click "Done" at the top and you should now have Safemoon added \n' +
+              'to your wallet!'
+            },
+            {
+                Title : 'Step 3: <b>Buy "Binance Smart Chain" (BSC)</b>',
+                Text  : 'Tap on "Smart Chain" on the main screen of trust wallet, then tap "Buy" in the top right. This step may require KYC verification, so have documents ready to prove your identity.<br><br>' +
+              '<span>If the transaction won\'t go through, you may need to contact your bank to allow international transactions.</span><br><br>' +
+              'After purchasing, there may be a delay while your transaction is processed. Be patient, this is normal!'
+            },
+            {
+                Title : 'Step 4: Swap BSC for Safemoon!',
+                Text  : 'Once your transaction has been cleared, and you have BSC on your Trust Wallet, Go to DApps (or "Browser" for iPhones) at the bottom of the main screen. If the Browser button is not visible at the bottom for iPhone, open Safari and in the URL type <a href="trust://browser_enable">trust://browser_enable</a>, then return to trust wallet.<br><br>' +
+              'Open the DApps, or Browser, section and find PancakeSwap and open it. Connect your Trust Wallet in the top-right. Scroll down a little to the "Exchange" box<br><br>' +
+              'Click the  icon and set the slippage to 12%. If you want to give it the best possible change to clear, increase the deadline. By default it should be set to 20 minutes, which is fine.',
+                SubTitle : 'Once the slippage is set, and you have the BNB amount set that you wish to swap for safemoon as shown, just click Swap and wait patiently for the transaction to clear. This process may not be instant and can take anywhere from a few minutes up to an hour sometimes, depending on traffic.',
+                Bottom   : 'Once the transaction has been cleared, you should have Safemoon in your Trust Wallet!\n<br><br><span>Now all that\'s left is to HODL!</span>',
+            }
+        ],
+        Copy    : 'Copy',
+        Address : 'Address'
     }
 };
