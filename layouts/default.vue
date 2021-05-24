@@ -1,7 +1,14 @@
 <template>
   <div class="app bg-dark">
-    <transition name="slide-down">
-      <div v-if="routeName && routeName.indexOf('index') > -1 && show.Layer" class="layer layer-index" />
+    <transition name="slide-down" mode="out-in">
+      <div
+        v-if="show.Layer"
+        :class="[
+          'layer',
+          { 'layer-index': routeName && routeName.indexOf('index') > -1 },
+          { 'layer-page': routeName && routeName.indexOf('index') === -1 }
+        ]"
+      />
     </transition>
     <!-- navbar -->
     <div class="container">
@@ -28,6 +35,14 @@ export default {
     computed : {
         routeName() {
             return this.$route.name;
+        }
+    },
+    watch : {
+        $route() {
+            Object.keys(this.show).forEach(key => (this.$set(this.show, key, false)));
+            setTimeout(() => {
+                Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
+            }, 0);
         }
     },
     mounted() {
@@ -61,15 +76,22 @@ export default {
     transform-origin: center top;
     background-repeat: no-repeat;
     background-position: center top;
+    background-image: url('~assets/images/layer-index.png');
+    width: 1187px;
+    height: 1159px;
+    filter: blur(50px);
     &-index {
-      background-image: url('~assets/images/layer-index.png');
-      width: 1187px;
-      height: 1159px;
       left: auto;
       right: -100px;
       top: -267px;
       bottom: auto;
-      filter: blur(50px);
+
+    }
+    &-page {
+      bottom: auto;
+      right: auto;
+      top: -599px;
+      left: calc(47vw - (1187px / 2));
     }
   }
 </style>
