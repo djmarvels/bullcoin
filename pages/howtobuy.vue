@@ -141,6 +141,7 @@ export default {
 }
 .htb {
   margin-bottom: 70px;
+  position: relative;
   &-example {
     height: auto;
     &--first {
