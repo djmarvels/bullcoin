@@ -143,5 +143,15 @@ export default {
             TradePair : 'Trade Pair',
             Listed    : 'Listed'
         }
-    }
+    },
+    /* Contact */
+    Contact : {
+        Title       : 'Contact',
+        Email       : 'Email',
+        Cooperation : 'Cooperation'
+    },
+    /* Articles */
+    Articles: {
+      Title: 'Articles',
+    },
 };

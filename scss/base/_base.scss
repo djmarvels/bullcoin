@@ -77,3 +77,11 @@ a, a:hover {
 .htb-step-box--bottom span {
   color: $white;
 }
+
+.article-title {
+  @media (max-width: 575px) {
+    br {
+      display: none;
+    }
+  }
+}

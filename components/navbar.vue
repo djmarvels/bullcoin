@@ -22,7 +22,7 @@
           <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Blog')" />
         </li>
         <li class="navbar-item">
-          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Contact')" />
+          <nuxt-link :to="pathTo('/contact')" class="navbar-link" v-html="$t('Navbar.Contact')" />
         </li>
       </ul>
       <ul class="navbar-nav navbar-nav--socials">
