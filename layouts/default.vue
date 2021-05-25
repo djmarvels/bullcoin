@@ -2,7 +2,7 @@
   <div class="app bg-dark">
     <transition name="slide-down" mode="out-in">
       <div
-        v-if="show.Layer"
+        v-if="show.Layer && routeName.indexOf('page') === -1 && routeName.indexOf('terms') === -1"
         :class="[
           'layer',
           { 'layer-index': routeName && routeName.indexOf('index') > -1 },
@@ -42,16 +42,15 @@ export default {
             Object.keys(this.show).forEach(key => (this.$set(this.show, key, false)));
             setTimeout(() => {
                 Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
-            }, 0);
+            }, 500);
         }
     },
     mounted() {
-        this.$nextTick(() => {
+      setTimeout(() => {
             Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
-        });
+        }, 500);
     },
     beforeDestroy() {
-        Object.keys(this.show).forEach(key => (this.$set(this.show, key, false)));
     }
 };
 </script>

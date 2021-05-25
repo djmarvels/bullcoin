@@ -7,7 +7,7 @@
             <h1 class="htb-title" v-html="$t('HowToBuy.Head.Title')" />
             <div class="htb-subtitle" v-html="$t('HowToBuy.Head.SubTitle')" />
             <div class="htb-buttons">
-              <button type="button" class="htb-button htb-button--market" v-html="$t('HowToBuy.Head.Buttons[0]')" />
+              <nuxt-link :to="localePath('/markets')" class="htb-button htb-button--market" v-html="$t('HowToBuy.Head.Buttons[0]')" />
               <button type="button" class="htb-button htb-button--buy" v-html="$t('HowToBuy.Head.Buttons[1]')" />
             </div>
           </div>

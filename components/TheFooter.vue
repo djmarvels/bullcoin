@@ -10,12 +10,22 @@
           <div class="footer-logo-text" v-html="$t('Footer.LogoText')" />
         </div>
         <div class="footer-menu">
-          <nuxt-link
-            v-for="i in 8"
-            :key="i"
-            :to="localePath('/')"
-            v-html="$t(`Footer.Menu[${i - 1}]`)"
-          />
+          <!-- Home -->
+          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[0]`)" />
+          <!-- How to buy -->
+          <nuxt-link :to="localePath('/howtobuy')" v-html="$t(`Footer.Menu[1]`)" />
+          <!-- Blogs -->
+          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[2]`)" />
+          <!-- Price -->
+          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[3]`)" />
+          <!-- Services -->
+          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[4]`)" />
+          <!-- Contract -->
+          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[5]`)" />
+          <!-- Wallet Tracker -->
+          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[6]`)" />
+          <!-- F.A.Q -->
+          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[7]`)" />
         </div>
         <div class="footer-socials">
           <a href="#!" class="footer-social"><twitter /></a>
@@ -32,9 +42,9 @@
       <div class="footer-bottom">
         <div class="footer-copyright" v-html="$t('Footer.Copyright')" />
         <div class="footer-links">
-          <nuxt-link :to="localePath('/')" v-html="$t('Footer.Terms')" />
-          <nuxt-link :to="localePath('/')" v-html="$t('Footer.Privacy')" />
-          <nuxt-link :to="localePath('/')" v-html="$t('Footer.Cookie')" />
+          <nuxt-link :to="localePath('/terms')" v-html="$t('Footer.Terms')" />
+          <nuxt-link :to="localePath('/terms')" v-html="$t('Footer.Privacy')" />
+          <nuxt-link :to="localePath('/terms')" v-html="$t('Footer.Cookie')" />
         </div>
       </div>
     </div>
