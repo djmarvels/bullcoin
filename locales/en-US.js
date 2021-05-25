@@ -128,10 +128,20 @@ export default {
               'Open the DApps, or Browser, section and find PancakeSwap and open it. Connect your Trust Wallet in the top-right. Scroll down a little to the "Exchange" box<br><br>' +
               'Click the  icon and set the slippage to 12%. If you want to give it the best possible change to clear, increase the deadline. By default it should be set to 20 minutes, which is fine.',
                 SubTitle : 'Once the slippage is set, and you have the BNB amount set that you wish to swap for safemoon as shown, just click Swap and wait patiently for the transaction to clear. This process may not be instant and can take anywhere from a few minutes up to an hour sometimes, depending on traffic.',
-                Bottom   : 'Once the transaction has been cleared, you should have Safemoon in your Trust Wallet!\n<br><br><span>Now all that\'s left is to HODL!</span>',
+                Bottom   : 'Once the transaction has been cleared, you should have Safemoon in your Trust Wallet!\n<br><br><span>Now all that\'s left is to HODL!</span>'
             }
         ],
         Copy    : 'Copy',
         Address : 'Address'
+    },
+    /* Markets */
+    Markets : {
+        Title    : 'Markets',
+        SubTitle : 'The most trusted cryptocurrency trading platform which provides real-time trading services including Bitcoin (BTC), Ethereum (ETH) and Tether (USDT) trading. Safemoon can easily be bought and sold on BitMart using USDT.',
+        Table    : {
+            Name      : 'Name',
+            TradePair : 'Trade Pair',
+            Listed    : 'Listed'
+        }
     }
 };

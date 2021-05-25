@@ -116,7 +116,7 @@ export default {
     padding: 0;
     margin-right: 0;
     position: relative;
-    z-index: 1;
+    z-index: 3;
     order: 1;
 
     img {
@@ -142,7 +142,7 @@ export default {
     margin-left: auto;
     justify-content: flex-end;
     position: relative;
-    z-index: 1;
+    z-index: 3;
     @media (min-width: 992px) {
       order: 2;
     }
@@ -237,7 +237,7 @@ export default {
       height: 33px;
       width: auto;
       position: relative;
-      z-index: 1;
+      z-index: 3;
     }
     @media (max-width: 991px) and (min-width: 376px) {
       margin-left: 30px;
