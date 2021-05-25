@@ -1,50 +1,52 @@
 <template>
   <div class="articles">
-    <div class="container">
-      <div class="row">
-        <div class="col col-12">
-          <div class="articles-head">
-            <div class="articles-title" v-html="$t('Articles.Title')" />
+    <transition name="fade">
+      <div v-if="articles" class="container">
+        <div class="row">
+          <div class="col col-12">
+            <div class="articles-head">
+              <div class="articles-title" v-html="$t('Articles.Title')" />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row articles-body">
-        <div v-for="i in 8" :key="i" class="col col-12 col-lg-6">
-          <div class="article">
-            <img class="article-image" :src="require('~/assets/images/article-image.png').default">
-            <div class="article-overlay" />
-            <div class="article-content">
-              <div class="article-title" v-html="'Основной заголовок статьи <br>'+ 'в две строки'" />
-              <div class="article-text" v-html="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nisl hendrerit facilisis purus velit, non.'" />
+        <div class="row articles-body">
+          <div v-for="i in 8" :key="i" class="col col-12 col-lg-6">
+            <nuxt-link :to="localePath('/page')" class="article">
+              <img class="article-image" :src="require('~/assets/images/article-image.png').default">
+              <div class="article-overlay" />
+              <div class="article-content">
+                <div class="article-title" v-html="'Основной заголовок статьи <br>'+ 'в две строки'" />
+                <div class="article-text" v-html="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nisl hendrerit facilisis purus velit, non.'" />
+              </div>
+            </nuxt-link>
+          </div>
+        </div>
+        <div class="row articles-nav">
+          <div class="col col-12">
+            <div class="articles-nav--row">
+              <button class="articles-nav--button articles-nav--prev">
+                <articlesPrev />
+              </button>
+              <button class="articles-nav--button articles-nav--number">
+                <span>1</span>
+              </button>
+              <button class="articles-nav--button articles-nav--number">
+                <span>2</span>
+              </button>
+              <button class="articles-nav--button articles-nav--number">
+                <span>3</span>
+              </button>
+              <button class="articles-nav--button articles-nav--dots">
+                <span>...</span>
+              </button>
+              <button class="articles-nav--button articles-nav--next">
+                <articlesNext />
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <div class="row articles-nav">
-        <div class="col col-12">
-          <div class="articles-nav--row">
-            <button class="articles-nav--button articles-nav--prev">
-              <articlesPrev />
-            </button>
-            <button class="articles-nav--button articles-nav--number">
-              <span>1</span>
-            </button>
-            <button class="articles-nav--button articles-nav--number">
-              <span>2</span>
-            </button>
-            <button class="articles-nav--button articles-nav--number">
-              <span>3</span>
-            </button>
-            <button class="articles-nav--button articles-nav--dots">
-              <span>...</span>
-            </button>
-            <button class="articles-nav--button articles-nav--next">
-              <articlesNext />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -56,6 +58,14 @@ export default {
     components : {
         articlesPrev,
         articlesNext
+    },
+    data : () => ({
+        articles : false
+    }),
+    mounted() {
+        this.$nextTick(() => {
+            this.articles = true;
+        });
     }
 };
 </script>
@@ -170,6 +180,7 @@ export default {
   background: #141212;
   border-radius: 10px;
   margin-bottom: 30px;
+  display: block;
   @media (min-width: 992px) {
     min-height: 275px;
     max-height: 275px;
