@@ -141,7 +141,6 @@ export default {
 }
 .htb {
   margin-bottom: 70px;
-  position: relative;
   &-example {
     height: auto;
     &--first {
@@ -339,6 +338,7 @@ export default {
   }
   &-head {
     position: relative;
+    z-index: 3;
     margin-top: 74px;
     width: 100%;
     max-width: 549px;

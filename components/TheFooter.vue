@@ -80,6 +80,8 @@ export default {
     align-items: center;
     justify-content: space-between;
     border-top: 1px solid #3A3A3A;
+    position: relative;
+    z-index: 2;
     @media (max-width: 767px) {
       flex-direction: column;
     }
@@ -125,6 +127,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    position: relative;
+    z-index: 2;
     @media (max-width: 991px) {
       flex-wrap: wrap;
     }
