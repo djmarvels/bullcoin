@@ -18,7 +18,7 @@
         <li class="navbar-item">
           <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Service')" />
         </li>
-        <li class="navbar-item">
+        <li v-if="isBlog" class="navbar-item">
           <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Blog')" />
         </li>
         <li class="navbar-item">
@@ -74,6 +74,9 @@ export default {
         },
         currentLocale() {
             return this.$i18n.locale;
+        },
+        isBlog() {
+            return process.env.blog;
         }
     },
     beforeMount() {
@@ -95,7 +98,9 @@ export default {
     },
     methods : {
         pathTo(path) {
-            if (typeof this.localePath === 'undefined') return path;
+            if (typeof this.localePath === 'undefined') {
+                return path;
+            }
             return this.localePath(path);
         }
     }

@@ -8,7 +8,7 @@
             <div v-if="show.indexText" class="index-header">
               <h1 class="index-header-title" v-html="$t('Index.Header.Title')" />
               <div class="index-header-bottom">
-                <button type="button" class="index-header-button" v-html="$t('Index.Header.Button')" />
+                <nuxt-link :to="localePath('/howtobuy')" class="index-header-button" v-html="$t('Index.Header.Button')" />
                 <p class="index-header-text" v-html="$t('Index.Header.Text')" />
               </div>
             </div>
@@ -68,7 +68,7 @@
           </div>
           <div class="index-buy-right">
             <p class="index-buy-text" v-html="$t('Index.Buy.Text')" />
-            <button class="index-buy-button" type="button" v-html="$t('Index.Buy.Button')" />
+            <nuxt-link class="index-buy-button" :to="localePath('/howtobuy')" type="button" v-html="$t('Index.Buy.Button')" />
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@
           <div class="row">
             <div class="col col-12 col-lg-6">
               <div class="index-steps-box">
-                <img class="index-steps-image" :src="require('~/assets/images/roadmap-enot.png').default" />
+                <img class="index-steps-image" :src="require('~/assets/images/roadmap-enot.png').default">
                 <div class="index-steps-title">
                   <span v-html="$t('Index.Roadmap.Road')" />
                   <span v-html="$t('Index.Roadmap.Map')" />
@@ -150,7 +150,7 @@
       </div>
     </transition>
     <transition name="fade">
-      <div v-if="show.blog" class="index-blog">
+      <div v-if="show.blog && isBlog" class="index-blog">
         <div class="index-blog-aside">
           <div class="index-blog-aside--title" v-html="$t('Index.Blog.Title')" />
           <div class="index-blog-aside--bottom">
@@ -206,6 +206,11 @@ export default {
         timeStep     : 2990,
         blogCarousel : null
     }),
+    computed : {
+        isBlog() {
+            return process.env.blog;
+        }
+    },
     mounted() {
         Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
         this.startIntervalStep();
@@ -828,6 +833,10 @@ export default {
       color: $white;
       padding: 14px 55px;
       border: 0;
+      transition: all .2s 0s ease-in-out;
+      &:hover {
+        transform: scale(1.05);
+      }
       @media (max-width: 1199px) {
         margin: 8px 0 0 27px;
       }
@@ -1100,7 +1109,7 @@ export default {
       padding: 21px 41px 19px;
       transition: all .3s 0s ease-in-out;
       &:hover {
-       box-shadow: none;
+        box-shadow: none;
         transform: scale(1.05);
       }
       @media (max-width: 767px) {

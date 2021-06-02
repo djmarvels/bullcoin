@@ -22,7 +22,7 @@
       </transition>
     </div>
     <transition name="fade" mode="out-in">
-      <div class="container" v-if="show.steps">
+      <div v-if="show.steps" class="container">
         <div class="row">
           <div class="col col-12 col-lg-6 order-lg-1 order-2">
             <div class="htb-steps htb-steps--column">
@@ -40,10 +40,8 @@
                   <div class="htb-step-box--text" v-html="$t('HowToBuy.Steps[0].Text')" />
                   <div class="htb-step-copy">
                     <div class="htb-step-copy--label" v-html="$t('HowToBuy.Address')" />
-                    <div class="htb-step-copy--value">
-                      0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3
-                    </div>
-                    <button type="button" class="htb-step-copy--button" v-html="$t('HowToBuy.Copy')" />
+                    <div class="htb-step-copy--value" v-html="htbAddress" />
+                    <button type="button" class="htb-step-copy--button" @click="copyValue" v-html="$t('HowToBuy.Copy')" />
                   </div>
                 </div>
               </div>
@@ -121,10 +119,30 @@ export default {
         show : {
             head  : false,
             steps : false
-        }
+        },
+        htbAddress : '0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3'
     }),
     mounted() {
         Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
+    },
+    methods : {
+        async copyValue() {
+            try {
+                await this.$copyText(this.htbAddress);
+                this.$toast.show('Адрес успешно скопирован', {
+                    type     : 'success',
+                    position : 'top-right',
+                    duration : 3000
+                });
+            }
+            catch (error) {
+                this.$toast.show(error, {
+                    type     : 'error',
+                    position : 'top-right',
+                    duration : 3000
+                });
+            }
+        }
     }
 };
 </script>
