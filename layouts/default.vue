@@ -20,8 +20,10 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import navbar from '@/components/navbar';
 import TheFooter from '@/components/TheFooter';
+
 export default {
     components : {
         navbar,
@@ -39,6 +41,7 @@ export default {
     },
     watch : {
         $route() {
+            this.getArticles();
             Object.keys(this.show).forEach(key => (this.$set(this.show, key, false)));
             setTimeout(() => {
                 Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
@@ -46,11 +49,17 @@ export default {
         }
     },
     mounted() {
-      setTimeout(() => {
+        this.getArticles();
+        setTimeout(() => {
             Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
         }, 500);
     },
     beforeDestroy() {
+    },
+    methods : {
+        ...mapActions({
+            getArticles : 'blog/GET_ARTICLES'
+        })
     }
 };
 </script>

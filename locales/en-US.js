@@ -131,8 +131,9 @@ export default {
                 Bottom   : 'Once the transaction has been cleared, you should have Safemoon in your Trust Wallet!\n<br><br><span>Now all that\'s left is to HODL!</span>'
             }
         ],
-        Copy    : 'Copy',
-        Address : 'Address'
+        Copy       : 'Copy',
+        CopyNotify : 'Address copied successfully',
+        Address    : 'Address'
     },
     /* Markets */
     Markets : {

@@ -129,7 +129,7 @@ export default {
         async copyValue() {
             try {
                 await this.$copyText(this.htbAddress);
-                this.$toast.show('Адрес успешно скопирован', {
+                this.$toast.show(this.$t('HowToBuy.CopyNotify'), {
                     type     : 'success',
                     position : 'top-right',
                     duration : 3000
