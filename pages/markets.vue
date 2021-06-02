@@ -7,7 +7,7 @@
             <h1 class="markets-header--title" v-html="$t('Markets.Title')" />
             <h1 class="markets-header--subtitle" v-html="$t('Markets.SubTitle')" />
           </div>
-          <div class="markets-person" />
+          <img class="markets-person" :src="require('~/assets/images/roadmap-enot.png').default" />
         </div>
       </div>
     </transition>
@@ -203,21 +203,30 @@ export default {
     position: relative;
   }
   &-person {
-    width: 293px;
-    height: 403px;
-    position: absolute;
-    right: 176px;
-    left: auto;
-    top: 0;
-    z-index: 1;
-    background: url('~assets/images/markets-person.png') no-repeat center top;
-    animation: rotate_image 9s 0s linear infinite;
-    @media (max-width: 1199px) {
-      right: -40px;
+    @media (min-width: 576px) {
+      height: auto;
+      position: absolute;
+      left: auto;
+      z-index: 1;
+      animation: rotate_image 9s 0s linear infinite;
     }
-    @media (max-width: 767px) {
-      right: -185px;
-      top: 125px;
+    @media (min-width: 992px) {
+      width: 60%;
+      top: -40%;
+      right: -15%;
+    }
+    @media (max-width: 991px) and (min-width: 768px) {
+      width: 60%;
+      top: 0;
+      right: -15%;
+    }
+    @media (max-width: 767px) and (min-width: 576px) {
+      width: 60%;
+      top: 52%;
+      right: -25%;
+    }
+    @media (max-width: 575px) {
+      display: none;
     }
   }
   &-header {
