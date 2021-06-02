@@ -3,7 +3,7 @@ import webpack from 'webpack';
 
 export default {
     ssr    : false,
-    target : 'static',
+    target : 'server',
     env    : {
         blog : false
     },
@@ -100,8 +100,8 @@ export default {
   ** Nuxt.js dev-modules
   */
     buildModules : [
-    // Doc: https://github.com/nuxt-community/eslint-module
-        //  '@nuxtjs/eslint-module'
+        // Doc: https://github.com/nuxt-community/eslint-module
+        // '@nuxtjs/eslint-module'
     ],
     moment : {
         defaultLocale : 'ru',
@@ -123,6 +123,7 @@ export default {
         '@nuxtjs/moment',
         'cookie-universal-nuxt',
         'nuxt-clipboard2',
+        '@nuxt/http',
         ['nuxt-i18n',
             {
                 locales : [
@@ -152,6 +153,12 @@ export default {
         //         webvisor            : true
         //     }]
     ],
+    /*
+     ** Server Middleware
+    */
+    serverMiddleware : {
+        '/api' : '~/api'
+    },
     /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
