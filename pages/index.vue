@@ -122,7 +122,7 @@
           <div class="row">
             <div class="col col-12 col-lg-6">
               <div class="index-steps-box">
-                <div class="index-steps-image" />
+                <img class="index-steps-image" :src="require('~/assets/images/roadmap-enot.png').default" />
                 <div class="index-steps-title">
                   <span v-html="$t('Index.Roadmap.Road')" />
                   <span v-html="$t('Index.Roadmap.Map')" />
@@ -471,15 +471,28 @@ export default {
     }
     &-image {
       position: absolute;
-      background: url('~assets/images/roadmap-img.png') no-repeat center top;
-      width: 293px;
-      height: 403px;
-      left: 186.86px;
-      top: -16.38px;
+      height: auto;
       z-index: 2;
       animation: rotate_image 9s 0s linear infinite;
+      @media (min-width: 1200px) {
+        left: 30%;
+        top: -20%;
+        width: 90%;
+      }
+      @media (max-width: 1199px) and (min-width: 576px) {
+        width: 80%;
+        left: 40%;
+        top: 0;
+      }
+      @media (max-width: 575px) and (min-width: 375px) {
+        width: 100%;
+        left: 40%;
+        top: -20px;
+      }
       @media (max-width: 374px) {
-        display: none;
+        width: 70%;
+        left: 65%;
+        top: -30px;
       }
     }
     &-title {
