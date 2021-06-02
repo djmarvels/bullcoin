@@ -4,11 +4,14 @@ import webpack from 'webpack';
 export default {
     ssr    : false,
     target : 'static',
+    env    : {
+        blog : false
+    },
     // mode: 'universal',
     /*
   ** Headers of the page
   */
-    head   : {
+    head : {
         title                          : 'BullCoin',
         __dangerouslyDisableSanitizers : ['script'],
         meta                           : [
@@ -115,9 +118,11 @@ export default {
     modules : [
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
+        '@nuxtjs/toast',
         '@nuxtjs/svg',
         '@nuxtjs/moment',
         'cookie-universal-nuxt',
+        'nuxt-clipboard2',
         ['nuxt-i18n',
             {
                 locales : [

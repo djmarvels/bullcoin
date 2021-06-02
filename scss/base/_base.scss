@@ -89,5 +89,19 @@ a, a:hover {
 .terms-content {
   span.white {
     font-weight: 500;
+    @media (min-width: 576px) {
+      font-size: 28px;
+      margin: 22px 0;
+    }
+    @media (max-width: 575px) {
+      font-size: 20px;
+      margin: 18px 0;
+    }
+  }
+}
+
+a {
+  &:hover {
+    color: inherit;
   }
 }
