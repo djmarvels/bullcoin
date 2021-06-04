@@ -1,7 +1,7 @@
 <template>
   <div class="articles">
     <transition name="fade">
-      <div v-if="articles" class="container">
+      <div v-if="articles.length" class="container">
         <div class="row">
           <div class="col col-12">
             <div class="articles-head">
@@ -10,18 +10,18 @@
           </div>
         </div>
         <div class="row articles-body">
-          <div v-for="i in 8" :key="i" class="col col-12 col-lg-6">
-            <nuxt-link :to="localePath('/page')" class="article">
+          <div v-for="article in articles" :key="article.id" class="col col-12 col-lg-6">
+            <nuxt-link :to="localePath(`/articles/${article.id}/`)" class="article">
               <img class="article-image" :src="require('~/assets/images/article-image.png')">
               <div class="article-overlay" />
               <div class="article-content">
-                <div class="article-title" v-html="'Основной заголовок статьи <br>'+ 'в две строки'" />
-                <div class="article-text" v-html="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nisl hendrerit facilisis purus velit, non.'" />
+                <div class="article-title" v-html="article.title.en" />
+                <div class="article-text" v-html="article.content.en" />
               </div>
             </nuxt-link>
           </div>
         </div>
-        <div class="row articles-nav">
+        <div class="row articles-nav d-none">
           <div class="col col-12">
             <div class="articles-nav--row">
               <button class="articles-nav--button articles-nav--prev">
@@ -53,25 +53,39 @@
 <script>
 import articlesPrev from '~/assets/icons/articles-chevron-left.svg?inline';
 import articlesNext from '~/assets/icons/articles-chevron-next.svg?inline';
+import { mapActions, mapMutations, mapGetters } from "vuex";
+
 export default {
     name       : 'Articles',
     components : {
         articlesPrev,
         articlesNext
     },
-    data : () => ({
-        articles : false
-    }),
+    computed: {
+      ...mapGetters({
+        articles: 'blog/articles'
+      }),
+    },
     mounted() {
-        this.$nextTick(() => {
-            this.articles = true;
+        this.$nextTick(async () => {
+          await this.getArticles();
+          await this.clearArticle();
         });
+    },
+    methods: {
+      ...mapActions({
+        getArticles: 'blog/GET_ARTICLES'
+      }),
+      ...mapMutations({
+        clearArticle: 'blog/CLEAR_ARTICLE'
+      }),
     }
 };
 </script>
 
 <style scoped lang="scss">
 .articles {
+  min-height: calc(100vh - 200px);
   &-nav {
     margin-top: 27px;
     &--row {

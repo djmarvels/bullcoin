@@ -13,6 +13,7 @@ export const mutations = {
       state.articles = payload.reverse();
     },
     SET_ARTICLE(state, payload) {
+      payload.date = this.$moment(payload.date).format('DD.MM.YYYY - HH:mm');
       state.article = payload;
     },
     CLEAR_ARTICLE(state) {
@@ -54,7 +55,6 @@ export const actions = {
     async GET_ARTICLE({ commit }, id) {
       try {
         const response = await this.$axios.$post(`/api/article/get`, { id });
-        console.log(response);
         commit('SET_ARTICLE', response);
       } catch (error) {
         this.$toast.error(error, {

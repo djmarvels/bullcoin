@@ -5,7 +5,7 @@ export default {
     ssr    : false,
     target : 'server',
     env    : {
-        blog : false
+        blog : true
     },
     // mode: 'universal',
     /*

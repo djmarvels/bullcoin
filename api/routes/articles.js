@@ -69,7 +69,7 @@ router.post('/article/save', jsonParser, (req, res) => {
 
   const collection = req.app.locals.client.db('main').collection('articles');
 
-  collection.update({
+  collection.updateOne({
     id: +(req.body.id)
   }, {
     $set: {
