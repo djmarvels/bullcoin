@@ -24,7 +24,7 @@
         </div>
         <div class="row page-content--row">
           <div class="col col-12 col-lg-6">
-            <img class="page-content-picture" :src="require('~/assets/images/page-picture.png').default">
+            <img class="page-content-picture" :src="require('~/assets/images/page-picture.png')">
           </div>
           <div class="col col-12 col-lg-6">
             <div class="page-content-text">
@@ -36,7 +36,7 @@
         </div>
         <div class="row page-content--column">
           <div class="col col-12">
-            <img class="page-content-picture" :src="require('~/assets/images/page-picture-bottom.png').default">
+            <img class="page-content-picture" :src="require('~/assets/images/page-picture-bottom.png')">
           </div>
           <div class="col col-12">
             <div class="page-content-text page-content-text--column">
@@ -46,7 +46,7 @@
         </div>
         <div class="row page-content--column">
           <div class="col col-12">
-            <img class="page-content-picture" :src="require('~/assets/images/page-picture-bottom.png').default">
+            <img class="page-content-picture" :src="require('~/assets/images/page-picture-bottom.png')">
           </div>
           <div class="col col-12">
             <div class="page-content-text page-content-text--column">

@@ -12,7 +12,7 @@
         <div class="row articles-body">
           <div v-for="i in 8" :key="i" class="col col-12 col-lg-6">
             <nuxt-link :to="localePath('/page')" class="article">
-              <img class="article-image" :src="require('~/assets/images/article-image.png').default">
+              <img class="article-image" :src="require('~/assets/images/article-image.png')">
               <div class="article-overlay" />
               <div class="article-content">
                 <div class="article-title" v-html="'Основной заголовок статьи <br>'+ 'в две строки'" />

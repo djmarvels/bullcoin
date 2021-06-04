@@ -13,7 +13,7 @@
           </div>
           <div class="htb-head-video">
             <div class="htb-head-video--inner">
-              <img :src="require('~/assets/images/buy-video-img.png').default" alt="" class="htb-head-video--image">
+              <img :src="require('~/assets/images/buy-video-img.png')" alt="" class="htb-head-video--image">
               <div class="htb-head-video--circle" />
               <button type="button" class="htb-head-video--play" />
             </div>
@@ -62,7 +62,7 @@
             </div>
           </div>
           <div class="col col-12 col-lg-6 order-lg-2 order-1">
-            <img :src="require(`~/assets/images/htb-example-1.png`).default" alt="" class="htb-example htb-example--first">
+            <img :src="require(`~/assets/images/htb-example-1.png`)" alt="" class="htb-example htb-example--first">
           </div>
         </div>
         <div class="row">
@@ -96,7 +96,7 @@
                 <div class="htb-step-box--title" v-html="$t('HowToBuy.Steps[3].Title')" />
                 <div class="htb-step-box--text" v-html="$t('HowToBuy.Steps[3].Text')" />
                 <div class="htb-step-box--subtitle">
-                  <img :src="require('~/assets/images/htb-example-3.png').default" alt="" class="htb-step-box--subtitle-image">
+                  <img :src="require('~/assets/images/htb-example-3.png')" alt="" class="htb-step-box--subtitle-image">
                   <div class="htb-step-box--text" v-html="$t('HowToBuy.Steps[3].SubTitle')" />
                 </div>
                 <div class="htb-step-box--bottom" v-html="$t('HowToBuy.Steps[3].Bottom')" />
@@ -104,7 +104,7 @@
             </div>
           </div>
           <div class="col col-12 col-lg-6">
-            <img :src="require(`~/assets/images/htb-example-2.png`).default" alt="" class="htb-example htb-example--second">
+            <img :src="require(`~/assets/images/htb-example-2.png`)" alt="" class="htb-example htb-example--second">
           </div>
         </div>
       </div>

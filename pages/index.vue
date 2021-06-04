@@ -17,7 +17,7 @@
         <div class="col col-12 col-lg-5">
           <div class="row">
             <transition name="slide-down" mode="in-out">
-              <img v-if="show.indexHeaderImage" class="index-header-image d-lg-block d-none" :src="require('~/assets/images/index-header-image.png').default">
+              <img v-if="show.indexHeaderImage" class="index-header-image d-lg-block d-none" :src="require('~/assets/images/index-header-image.png')">
             </transition>
           </div>
         </div>
@@ -122,7 +122,7 @@
           <div class="row">
             <div class="col col-12 col-lg-6">
               <div class="index-steps-box">
-                <img class="index-steps-image" :src="require('~/assets/images/roadmap-enot.png').default">
+                <img class="index-steps-image" :src="require('~/assets/images/roadmap-enot.png')">
                 <div class="index-steps-title">
                   <span v-html="$t('Index.Roadmap.Road')" />
                   <span v-html="$t('Index.Roadmap.Map')" />
@@ -178,10 +178,10 @@
     <div class="index-partners">
       <div class="container">
         <div class="index-partners-row">
-          <img :src="require('~/assets/images/BscScan.png').default" alt="" class="index-partner">
-          <img :src="require('~/assets/images/Certik.png').default" alt="" class="index-partner">
-          <img :src="require('~/assets/images/CoinMarketCap.png').default" alt="" class="index-partner">
-          <img :src="require('~/assets/images/nomics.png').default" alt="" class="index-partner">
+          <img :src="require('~/assets/images/BscScan.png')" alt="" class="index-partner">
+          <img :src="require('~/assets/images/Certik.png')" alt="" class="index-partner">
+          <img :src="require('~/assets/images/CoinMarketCap.png')" alt="" class="index-partner">
+          <img :src="require('~/assets/images/nomics.png')" alt="" class="index-partner">
         </div>
       </div>
     </div>
