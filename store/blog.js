@@ -38,6 +38,7 @@ export const actions = {
       try {
         await this.$axios.$post('/api/article', {
           title: payload.title,
+          description: payload.description,
           content: payload.content
         });
         await dispatch('GET_ARTICLES');
@@ -53,6 +54,7 @@ export const actions = {
     async GET_ARTICLE({ commit }, id) {
       try {
         const response = await this.$axios.$post(`/api/article/get`, { id });
+        console.log(response);
         commit('SET_ARTICLE', response);
       } catch (error) {
         this.$toast.error(error, {

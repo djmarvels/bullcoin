@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const jsonParser = bodyParser.json();
 
 
@@ -33,6 +34,7 @@ router.post('/article/get', jsonParser, (req, res, next) => {
 router.post('/article', jsonParser,(req, res) => {
   if(!req.body) return res.sendStatus(400);
   if(!req.body.title) return res.sendStatus(422);
+  if(!req.body.description) return res.sendStatus(422);
   if(!req.body.content) return res.sendStatus(422);
 
   const collection = req.app.locals.client.db('main').collection('articles');
@@ -46,7 +48,10 @@ router.post('/article', jsonParser,(req, res) => {
   collection.insertOne({
     id: ArticlesCount + 1,
     title: req.body.title,
-    content: req.body.content
+    description: req.body.description,
+    content: req.body.content,
+    create: Math.floor(Date.now() / 1000),
+    update: Math.floor(Date.now() / 1000),
   }, (err, article) => {
     if(err) return console.log(err);
     res.send(article);
@@ -58,6 +63,7 @@ router.post('/article/save', jsonParser, (req, res) => {
   if(!req.body) return res.sendStatus(400);
 
   if(!req.body.title) return res.sendStatus(422);
+  if(!req.body.description) return res.sendStatus(422);
   if(!req.body.content) return res.sendStatus(422);
   if(!req.body.id) return res.sendStatus(422);
 
@@ -68,7 +74,9 @@ router.post('/article/save', jsonParser, (req, res) => {
   }, {
     $set: {
       title: req.body.title,
-      content: req.body.content
+      description: req.body.description,
+      content: req.body.content,
+      update: Math.floor(Date.now() / 1000),
     }
   }, (err, article) => {
     if(err) return console.log(err);

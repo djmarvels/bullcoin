@@ -55,6 +55,7 @@
     "module": "^1.2.5",
     "moment": "^2.27.0",
     "mongodb": "^3.6.9",
+    "mongoose": "^5.12.12",
     "npm": "^6.14.8",
     "nuxt": "^2.14.3",
     "nuxt-clipboard2": "^0.2.1",

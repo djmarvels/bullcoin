@@ -25,6 +25,9 @@
               <el-form-item label="Title">
                 <el-input type="text" v-model="articleForm.title[articleForm.lang]" placeholder="Type title" />
               </el-form-item>
+              <el-form-item label="Description">
+                <el-input type="text" v-model="articleForm.description[articleForm.lang]" placeholder="Type description" />
+              </el-form-item>
               <el-form-item>
                 <div class="w-100">
                   <Editor ref="tinymce" api-key="lbwbw0j62bbd25kd0rukrtnao7hchkjkzlimni8xmchkfv70" :init="tinymce_options" v-model="articleForm.content[articleForm.lang]" />
@@ -50,6 +53,7 @@ export default {
   data: () => ({
     articleForm: {
       title: {},
+      description: {},
       content: {},
       lang: 'en'
     },
@@ -78,6 +82,7 @@ export default {
     this.lang = this.$i18n.defaultLocale;
     this.locales.forEach((locale) => {
       this.$set(this.articleForm.title, locale.code, '');
+      this.$set(this.articleForm.description, locale.code, '');
       this.$set(this.articleForm.content, locale.code, '');
     });
   },
@@ -92,6 +97,7 @@ export default {
       let isTypedForm;
 
       isTypedForm = Object.keys(this.articleForm.title).filter((key) => (this.articleForm.title[key].length));
+      isTypedForm = Object.keys(this.articleForm.description).filter((key) => (this.articleForm.description[key].length));
       isTypedForm = Object.keys(this.articleForm.content).filter((key) => (this.articleForm.content[key].length));
 
       if (isTypedForm.length) {
