@@ -5,7 +5,7 @@ export default {
     ssr    : false,
     target : 'server',
     env    : {
-        blog : false
+        blog : true
     },
     // mode: 'universal',
     /*
@@ -45,8 +45,8 @@ export default {
     router : {
     },
     server : {
-        // host : '5.188.158.194',
-        // port : 8000
+        host : '0.0.0.0',
+        port : 3000
     },
     /*
   ** Customize the progress-bar color
@@ -81,6 +81,7 @@ export default {
   */
     plugins : [
         { src : '~plugins/bootstrap.js', ssr : false },
+        { src : '~plugins/element.js', ssr : false },
         // { src: "~plugins/owl.carousel.js", ssr: false, },
         { src : '~plugins/tinymce.js', ssr : false }
         // { src : '~plugins/filepond.js', ssr : false },

@@ -7,7 +7,7 @@
             <h1 class="markets-header--title" v-html="$t('Markets.Title')" />
             <h1 class="markets-header--subtitle" v-html="$t('Markets.SubTitle')" />
           </div>
-          <img class="markets-person" :src="require('~/assets/images/roadmap-enot.png').default" />
+          <img class="markets-person" :src="require('~/assets/images/roadmap-enot.png')" />
         </div>
       </div>
     </transition>
@@ -24,7 +24,7 @@
             <div class="markets-tbody">
               <div v-for="row in 8" :key="row" class="markets-tr">
                 <div class="markets-td markets-col markets-col-1">
-                  <img :src="require(`~/assets/images/markets/${row}.png`).default" alt="">
+                  <img :src="require(`~/assets/images/markets/${row}.png`)" alt="">
                 </div>
                 <div class="markets-td markets-col markets-col-2">
                   <a href="#!" class="markets-td--link">

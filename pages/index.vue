@@ -17,7 +17,7 @@
         <div class="col col-12 col-lg-5">
           <div class="row">
             <transition name="slide-down" mode="in-out">
-              <img v-if="show.indexHeaderImage" class="index-header-image d-lg-block d-none" :src="require('~/assets/images/index-header-image.png').default">
+              <img v-if="show.indexHeaderImage" class="index-header-image d-lg-block d-none" :src="require('~/assets/images/index-header-image.png')">
             </transition>
           </div>
         </div>
@@ -122,7 +122,7 @@
           <div class="row">
             <div class="col col-12 col-lg-6">
               <div class="index-steps-box">
-                <img class="index-steps-image" :src="require('~/assets/images/roadmap-enot.png').default">
+                <img class="index-steps-image" :src="require('~/assets/images/roadmap-enot.png')">
                 <div class="index-steps-title">
                   <span v-html="$t('Index.Roadmap.Road')" />
                   <span v-html="$t('Index.Roadmap.Map')" />
@@ -150,7 +150,7 @@
       </div>
     </transition>
     <transition name="fade">
-      <div v-if="show.blog && isBlog" class="index-blog">
+      <div v-if="show.blog && isBlog && articles.length" class="index-blog">
         <div class="index-blog-aside">
           <div class="index-blog-aside--title" v-html="$t('Index.Blog.Title')" />
           <div class="index-blog-aside--bottom">
@@ -158,30 +158,19 @@
               <button type="button" class="index-blog-aside--prev" @click="blogPrev" />
               <button type="button" class="index-blog-aside--next" @click="blogNext" />
             </div>
-            <nuxt-link class="index-blog-aside--showall" :to="localePath('/')" v-html="$t('Index.Blog.ShowAll')" />
+            <nuxt-link class="index-blog-aside--showall" :to="localePath('/articles')" v-html="$t('Index.Blog.ShowAll')" />
           </div>
         </div>
-        <div id="blogCarousel" class="owl-carousel owl-theme index-blog-carousel">
-          <div v-for="i in 6" :key="i" class="item">
-            <div class="index-blog-carousel--item">
-              <div class="index-blog-carousel--title">
-                Заголовок статьи <br>в две строки
-              </div>
-              <div class="index-blog-carousel--text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et nisl hendrerit facilisis purus velit, non.
-              </div>
-            </div>
-          </div>
-        </div>
+        <the-articles />
       </div>
     </transition>
     <div class="index-partners">
       <div class="container">
         <div class="index-partners-row">
-          <img :src="require('~/assets/images/BscScan.png').default" alt="" class="index-partner">
-          <img :src="require('~/assets/images/Certik.png').default" alt="" class="index-partner">
-          <img :src="require('~/assets/images/CoinMarketCap.png').default" alt="" class="index-partner">
-          <img :src="require('~/assets/images/nomics.png').default" alt="" class="index-partner">
+          <img :src="require('~/assets/images/BscScan.png')" alt="" class="index-partner">
+          <img :src="require('~/assets/images/Certik.png')" alt="" class="index-partner">
+          <img :src="require('~/assets/images/CoinMarketCap.png')" alt="" class="index-partner">
+          <img :src="require('~/assets/images/nomics.png')" alt="" class="index-partner">
         </div>
       </div>
     </div>
@@ -189,6 +178,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import TheArticles from "~/components/TheArticles";
+
 export default {
     data : () => ({
         show : {
@@ -206,7 +198,13 @@ export default {
         timeStep     : 2990,
         blogCarousel : null
     }),
+    components: {
+      TheArticles
+    },
     computed : {
+        ...mapGetters({
+          articles: 'blog/articles',
+        }),
         isBlog() {
             return process.env.blog;
         }
@@ -214,18 +212,6 @@ export default {
     mounted() {
         Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
         this.startIntervalStep();
-        require('owl.carousel');
-        setTimeout(() => {
-            // eslint-disable-next-line no-undef
-            this.blogCarousel = jQuery('#blogCarousel').owlCarousel({
-                margin    : 10,
-                loop      : true,
-                autoWidth : true,
-                items     : 4,
-                nav       : false,
-                dots      : false
-            });
-        }, 0);
     },
     beforeDestroy() {
         if (this.intervalStep) {
