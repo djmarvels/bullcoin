@@ -49,6 +49,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "scss/base/colors";
 .contact {
   margin-top: 47px;
   margin-bottom: 450px;
@@ -124,6 +125,11 @@ export default {
     color: #ffffff;
     background: #211E1E;
     border-radius: 31px;
+    transition: all .3s 0s ease-in-out;
+    &:hover {
+      background: $red;
+      color: $white;
+    }
     svg {
       display: block;
       margin-right: 17px;
