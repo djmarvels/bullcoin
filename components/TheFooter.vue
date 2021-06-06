@@ -16,16 +16,17 @@
           <nuxt-link :to="localePath('/howtobuy')" v-html="$t(`Footer.Menu[1]`)" />
           <!-- Blogs -->
           <nuxt-link :to="localePath('/articles')" v-html="$t(`Footer.Menu[2]`)" />
-          <!-- Price -->
-          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[3]`)" />
-          <!-- Services -->
+          <!-- Price
+          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[3]`)" /> -->
+          <!-- Services
           <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[4]`)" />
+          -->
           <!-- Contact -->
           <nuxt-link :to="localePath('/contact')" v-html="$t(`Footer.Menu[5]`)" />
-          <!-- Wallet Tracker -->
-          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[6]`)" />
+          <!-- Wallet Tracker
+          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[6]`)" /> -->
           <!-- F.A.Q -->
-          <nuxt-link :to="localePath('/')" v-html="$t(`Footer.Menu[7]`)" />
+          <nuxt-link :to="localePath('/faq')" v-html="$t(`Footer.Menu[7]`)" />
         </div>
         <div class="footer-socials">
           <a href="#!" class="footer-social"><twitter /></a>

@@ -179,9 +179,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import TheArticles from "~/components/TheArticles";
+import TheArticles from '~/components/TheArticles';
 
 export default {
+    components : {
+        TheArticles
+    },
     data : () => ({
         show : {
             indexText        : false,
@@ -198,12 +201,9 @@ export default {
         timeStep     : 2990,
         blogCarousel : null
     }),
-    components: {
-      TheArticles
-    },
     computed : {
         ...mapGetters({
-          articles: 'blog/articles',
+            articles : 'blog/articles'
         }),
         isBlog() {
             return process.env.blog;
@@ -212,6 +212,11 @@ export default {
     mounted() {
         Object.keys(this.show).forEach(key => (this.$set(this.show, key, true)));
         this.startIntervalStep();
+        setTimeout(() => {
+            this.$nextTick(() => {
+                this.checkCookiesScroll();
+            });
+        }, 0);
     },
     beforeDestroy() {
         if (this.intervalStep) {
@@ -220,6 +225,16 @@ export default {
         // Object.keys(this.show).forEach(key => (this.$set(this.show, key, false)));
     },
     methods : {
+        checkCookiesScroll() {
+            const ecosystem = document.querySelector('.index-ecosystem');
+            const cookiesScroll = localStorage.getItem('scroll');
+            if (cookiesScroll) {
+                if (cookiesScroll === 'ecosystem') {
+                    this.$scrollTo(ecosystem);
+                }
+                localStorage.removeItem('scroll');
+            }
+        },
         startIntervalStep() {
             this.intervalStep = setTimeout(() => (this.nextStep()), this.timeStep);
         },

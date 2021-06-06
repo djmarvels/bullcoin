@@ -139,7 +139,8 @@ export default {
                 defaultLocale : 'en',
                 langDir       : '~/locales/'
             }
-        ]
+        ],
+        ['vue-scrollto/nuxt', { duration : 300 }]
         // '@nuxtjs/proxy',
         // 'nuxt-clipboard2',
         // 'nuxt-socket-io',

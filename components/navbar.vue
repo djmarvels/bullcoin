@@ -7,17 +7,18 @@
     <div id="navbarMenu" class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="navbar-item">
-          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Ecosystem')" />
+          <a href="javascript:;" class="navbar-link" @click="goToEcosystem" v-html="$t('Navbar.Ecosystem')" />
         </li>
         <li class="navbar-item">
           <nuxt-link :to="pathTo('/howtobuy')" class="navbar-link" v-html="$t('Navbar.HowToBuy')" />
         </li>
+        <!--
         <li class="navbar-item">
           <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Price')" />
         </li>
         <li class="navbar-item">
           <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Service')" />
-        </li>
+        </li>-->
         <li v-if="isBlog && articles.length" class="navbar-item">
           <nuxt-link :to="pathTo('/articles')" class="navbar-link" v-html="$t('Navbar.Blog')" />
         </li>
@@ -102,6 +103,16 @@ export default {
         });
     },
     methods : {
+        async goToEcosystem() {
+            const ecosystem = document.querySelector('.index-ecosystem');
+            if (!this.$route.name.includes('index')) {
+                localStorage.setItem('scroll', 'ecosystem');
+                await this.$router.push(this.localePath('/'));
+            }
+            else if (ecosystem) {
+                this.$scrollTo(ecosystem);
+            }
+        },
         pathTo(path) {
             if (typeof this.localePath === 'undefined') {
                 return path;
