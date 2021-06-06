@@ -44,8 +44,8 @@
         <div class="footer-copyright" v-html="$t('Footer.Copyright')" />
         <div class="footer-links">
           <nuxt-link :to="localePath('/terms')" v-html="$t('Footer.Terms')" />
-          <nuxt-link :to="localePath('/terms')" v-html="$t('Footer.Privacy')" />
-          <nuxt-link :to="localePath('/terms')" v-html="$t('Footer.Cookie')" />
+          <nuxt-link :to="localePath('/privacy')" v-html="$t('Footer.Privacy')" />
+          <nuxt-link :to="localePath('/cookie')" v-html="$t('Footer.Cookie')" />
         </div>
       </div>
     </div>

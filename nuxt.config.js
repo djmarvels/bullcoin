@@ -168,7 +168,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
     axios : {
-        baseURL : (process.env.NODE_ENV === 'production') ? process.env.BASE_URL : 'http://localhost/'
+        baseURL : (process.env.NODE_ENV === 'production') ? `http://${process.env.PROD_IP}:${process.env.PORT}/` : `http://localhost:${process.env.PORT}/`
     },
     /*
   ** Build configuration
