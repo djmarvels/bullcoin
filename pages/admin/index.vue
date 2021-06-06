@@ -51,7 +51,7 @@ export default {
     Authorize() {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          if (!(this.form.login !== 'admin' && this.form.password !== '123456')) {
+          if (!(this.form.login !== process.env.ADMIN_LOGIN && this.form.password !== process.env.ADMIN_PASSWORD)) {
             this.$cookies.set('admin', 'admin');
             this.$router.push(this.localePath('/admin/articles/'));
           } else {

@@ -5,7 +5,9 @@ export default {
     ssr    : false,
     target : 'server',
     env    : {
-        blog : true
+        blog : true,
+        ADMIN_LOGIN: process.env.ADMIN_LOGIN,
+        ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
     },
     // mode: 'universal',
     /*
