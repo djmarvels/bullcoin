@@ -18,7 +18,7 @@
         <li class="navbar-item">
           <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Service')" />
         </li>
-        <li v-if="isBlog" class="navbar-item">
+        <li v-if="isBlog && articles.length" class="navbar-item">
           <nuxt-link :to="pathTo('/articles')" class="navbar-link" v-html="$t('Navbar.Blog')" />
         </li>
         <li class="navbar-item">
@@ -66,9 +66,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     name     : 'Navbar',
     computed : {
+        ...mapGetters({
+            articles : 'blog/articles'
+        }),
         allLocales() {
             return this.$i18n.locales;
         },
