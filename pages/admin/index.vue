@@ -3,10 +3,12 @@
     <div class="container">
       <div class="row">
         <div class="col col-12">
-          <h3 class="text-center admin-title">Авторизация</h3>
+          <h3 class="text-center admin-title">
+            Авторизация
+          </h3>
         </div>
         <div class="col col-12">
-          <el-form class="admin-form" ref="form" :model="form">
+          <el-form ref="form" class="admin-form" :model="form">
             <el-form-item
               prop="login"
               :rules="[
@@ -24,7 +26,7 @@
               <el-input v-model="form.password" placeholder="Type password" type="password" />
             </el-form-item>
             <el-form-item>
-              <el-button v-html="'Authorize'" type="primary" class="w-100" @click="Authorize" />
+              <el-button type="primary" class="w-100" @click="Authorize" v-html="'Authorize'" />
             </el-form-item>
           </el-form>
         </div>
@@ -35,34 +37,34 @@
 
 <script>
 export default {
-  name: "index.vue",
-  data: () => ({
-    form: {
-      login: null,
-      password: null
-    },
-  }),
-  mounted() {
-    if (this.$cookies.get('admin')) {
-      this.$router.push(this.localePath('/admin/articles/'));
-    }
-  },
-  methods: {
-    Authorize() {
-      this.$refs.form.validate((valid) => {
-        if (valid) {
-          if (!(this.form.login !== process.env.ADMIN_LOGIN && this.form.password !== process.env.ADMIN_PASSWORD)) {
-            this.$cookies.set('admin', 'admin');
-            this.$router.push(this.localePath('/admin/articles/'));
-          } else {
-            this.$notify.error({ title: 'Error', message: 'Bad password' });
-          }
-
+    name : 'IndexVue',
+    data : () => ({
+        form : {
+            login    : null,
+            password : null
         }
-      });
+    }),
+    mounted() {
+        if (this.$cookies.get('admin')) {
+            this.$router.push(this.localePath('/admin/articles/'));
+        }
     },
-  }
-}
+    methods : {
+        Authorize() {
+            this.$refs.form.validate((valid) => {
+                if (valid) {
+                    if (!(this.form.login !== process.env.ADMIN_LOGIN && this.form.password !== process.env.ADMIN_PASSWORD)) {
+                        this.$cookies.set('admin', 'admin');
+                        this.$router.push(this.localePath('/admin/articles/'));
+                    }
+                    else {
+                        this.$notify.error({ title : 'Error', message : 'Bad password' });
+                    }
+                }
+            });
+        }
+    }
+};
 </script>
 
 <style scoped lang="scss">
