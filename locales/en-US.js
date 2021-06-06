@@ -82,7 +82,7 @@ export default {
             'Blogs',
             'Price',
             'Services',
-            'Contract',
+            'Contact',
             'Wallet Tracker',
             'F.A.Q'
         ],
@@ -156,7 +156,7 @@ export default {
         Title : 'Articles'
     },
     Page : {
-        Prev : 'Вернуться назад',
+        Prev : 'Come Back',
         Blog : 'read <br> \n' +
         'the <br> \n' +
         'same'

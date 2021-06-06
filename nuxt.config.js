@@ -5,9 +5,9 @@ export default {
     ssr    : true,
     target : 'server',
     env    : {
-        blog : true,
-        ADMIN_LOGIN: process.env.ADMIN_LOGIN,
-        ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
+        blog           : true,
+        ADMIN_LOGIN    : process.env.ADMIN_LOGIN,
+        ADMIN_PASSWORD : process.env.ADMIN_PASSWORD
     },
     // mode: 'universal',
     /*
@@ -167,7 +167,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
     axios : {
-      baseURL: process.env.BASE_URL,
+        baseURL : (process.env.NODE_ENV === 'production') ? process.env.BASE_URL : 'http://localhost/'
     },
     /*
   ** Build configuration
