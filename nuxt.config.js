@@ -140,7 +140,7 @@ export default {
                 langDir       : '~/locales/'
             }
         ],
-        ['vue-scrollto/nuxt', { duration : 300 }]
+        ['vue-scrollto/nuxt', { duration : 700 }]
         // '@nuxtjs/proxy',
         // 'nuxt-clipboard2',
         // 'nuxt-socket-io',
