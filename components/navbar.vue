@@ -19,7 +19,7 @@
           <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Service')" />
         </li>
         <li v-if="isBlog" class="navbar-item">
-          <nuxt-link :to="pathTo('/')" class="navbar-link" v-html="$t('Navbar.Blog')" />
+          <nuxt-link :to="pathTo('/articles')" class="navbar-link" v-html="$t('Navbar.Blog')" />
         </li>
         <li class="navbar-item">
           <nuxt-link :to="pathTo('/contact')" class="navbar-link" v-html="$t('Navbar.Contact')" />
