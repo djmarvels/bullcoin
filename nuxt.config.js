@@ -2,7 +2,7 @@
 import webpack from 'webpack';
 
 export default {
-    ssr    : false,
+    ssr    : true,
     target : 'server',
     env    : {
         blog : true,
