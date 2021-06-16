@@ -14,7 +14,6 @@
   "dependencies": {
     "@bazzite/nuxt-optimized-images": "^0.3.0",
     "@chenfengyuan/vue-qrcode": "^1.0.2",
-    "@denull/vkui": "^0.2.8",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@nikello/jquery-nice-select": "^1.2.0",
@@ -27,9 +26,6 @@
     "@reallifedigital/nuxt-image-loader-module": "^1.4.2",
     "@rkaliev/nuxtjs-yandex-metrika": "^1.0.3",
     "@tinymce/tinymce-vue": "^3.2.8",
-    "@vkontakte/vkui": "^3.12.5",
-    "@vue-vkui/vkui": "^0.1.1",
-    "apexcharts": "^3.21.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.4",
