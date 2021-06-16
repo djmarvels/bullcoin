@@ -1,33 +1,40 @@
 <template>
   <div class="app bg-dark">
-    <transition name="slide-down" mode="out-in">
-      <div
-        v-if="show.Layer && routeName.indexOf('page') === -1 && routeName.indexOf('terms') === -1"
-        :class="[
-          'layer',
-          { 'layer-index': routeName && routeName.indexOf('index') > -1 },
-          { 'layer-page': routeName && routeName.indexOf('index') === -1 }
-        ]"
-      />
-    </transition>
-    <!-- navbar -->
-    <div class="container">
-      <navbar />
-    </div>
-    <nuxt />
-    <the-footer />
+    <template v-if="!loading">
+      <transition name="slide-down" mode="out-in">
+        <div
+          v-if="show.Layer && routeName.indexOf('page') === -1 && routeName.indexOf('terms') === -1"
+          :class="[
+            'layer',
+            { 'layer-index': routeName && routeName.indexOf('index') > -1 },
+            { 'layer-page': routeName && routeName.indexOf('index') === -1 }
+          ]"
+        />
+      </transition>
+      <!-- navbar -->
+      <div class="container">
+        <navbar />
+      </div>
+      <nuxt />
+      <the-footer />
+    </template>
+    <template v-else>
+      <the-loader />
+    </template>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import navbar from '@/components/navbar';
 import TheFooter from '@/components/TheFooter';
+import TheLoader from '@/components/TheLoader';
 
 export default {
     components : {
         navbar,
-        TheFooter
+        TheFooter,
+        TheLoader
     },
     data : () => ({
         show : {
@@ -35,6 +42,9 @@ export default {
         }
     }),
     computed : {
+        ...mapGetters({
+            loading : 'page/loading'
+        }),
         routeName() {
             return this.$route.name;
         }
