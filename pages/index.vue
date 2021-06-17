@@ -844,9 +844,13 @@ export default {
         backdrop-filter: blur(20px);
       }
       @media (max-width: 991px) {
-        margin: 30px auto 0;
         display: block;
         text-align: center;
+        -webkit-appearance: none;
+        margin: 30px 0 0;
+        padding: 0;
+        height: 47px;
+        line-height: 47px;
       }
     }
     &-title {
