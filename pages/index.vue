@@ -824,9 +824,8 @@ export default {
       }
     }
     &-button {
-      margin: 22px 0 0 27px;
       background: linear-gradient(180deg, #E50012 0%, #F30013 0.01%, #740000 100%);
-      backdrop-filter: blur(20px);
+      margin: 22px 0 0 27px;
       border-radius: 8px;
       font-weight: normal;
       font-size: 15px;
@@ -841,9 +840,13 @@ export default {
       @media (max-width: 1199px) {
         margin: 8px 0 0 27px;
       }
+      @media (min-width: 992px) {
+        backdrop-filter: blur(20px);
+      }
       @media (max-width: 991px) {
         margin: 30px auto 0;
         display: block;
+        text-align: center;
       }
     }
     &-title {
