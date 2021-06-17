@@ -1,7 +1,7 @@
 # BullCoin
 
 > Friendly Project
-> Live example: http://195.189.96.193/
+## Live example: http://195.189.96.193/
 
 ## Build Setup
 
